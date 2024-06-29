@@ -1,3 +1,33 @@
-h1{
+body{
+    background-color: rgba(244, 242, 242, 0.994);
+}
+
+.day-box{
+    margin: 10px;
+}
+.day-box-title{
+    background-color: white;   
+    padding: 10px;
+    border-left: 5px solid;
+    border-left-color: rgba(13, 13, 203, 0.748);
+}
+.day-box-content{
     color: red;
+}
+.day-box-toggle-button {
+    background-color: rgba(0, 110, 255, 0.783);
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    border: 0px;
+}
+
+.day-box-footer{
+    margin-top: 5px;
+    height: 20px;
+    width: 100%;
+    background-color: white;
 }
