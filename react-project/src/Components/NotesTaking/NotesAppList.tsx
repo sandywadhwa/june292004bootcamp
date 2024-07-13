@@ -1,8 +1,20 @@
 import React from 'react'
 
-const NotesAppList = () => {
+const NotesAppList = (props: any) => {
+const notes = props.notes;
   return (
-    <div>NotesAppList</div>
+    <div>
+        {
+            notes.map((note: any) => {
+                return (
+                    <div>
+                        <h3>{note.text}</h3>
+                        <p>{note.date}</p>
+                    </div>
+                );
+            })
+        }
+    </div>
   )
 }
 
