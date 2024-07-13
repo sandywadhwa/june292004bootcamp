@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import RandomNumberGenerator from './RandomNumberGenerator'
 import TeamComponent from './TeamComponent'
 import Toss from './Toss'
+import NotesApp from './Components/NotesTaking/NotesApp'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -38,7 +39,8 @@ function App() {
         <li>
           <a href="/rand">Rand</a> | 
           <a href="/team">Team</a> | 
-          <a href="/toss">Toss</a>
+          <a href="/toss">Toss</a> | 
+          <a href="/notes">Notes</a> | 
         </li>
       </nav>
       <BrowserRouter>
@@ -46,6 +48,7 @@ function App() {
          <Route path="/rand" element={<RandomNumberGenerator />}></Route>
          <Route path="/team" element={<TeamComponent />}></Route>
          <Route path="/toss" element={<Toss />}></Route>
+         <Route path="/notes" element={<NotesApp />}></Route>
       </Routes>
     </BrowserRouter>
     </>
