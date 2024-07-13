@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NotesAppNavBar from './NotesAppNavbar'
 import NotesAppSearch from './NotesAppSearch'
 import NotesAppList from './NotesAppList'
@@ -9,8 +9,8 @@ import { nanoid } from 'nanoid/non-secure'
 
 
 const NotesApp = () => {
-
-    const [myNotes, setNotes] = useState([
+    const localStorageKey = 'web-dev-notes';
+    const defaultNotes = [
         {
             text: "This is first text",
             date: "01/01/2024",
@@ -21,7 +21,17 @@ const NotesApp = () => {
             date: "01/01/2025",
             id: nanoid()
         }
-    ]);
+    ];
+    const [myNotes, setNotes] = useState(() => {
+        const savedNotes = localStorage.getItem(localStorageKey);
+        if(savedNotes)
+            return JSON.parse(savedNotes);
+        return defaultNotes;
+    });
+
+    useEffect(() => {
+        localStorage.setItem(localStorageKey, JSON.stringify(myNotes));
+    });
 
     const addNote = (noteText: any) => {
         const date = new Date();
@@ -33,12 +43,15 @@ const NotesApp = () => {
         let newNotes = [...myNotes, newNote]
         setNotes(newNotes);
     }
+    const deleteNote = (noteId: any) => {
+
+    }
     return (
         <>
             <NotesAppNavBar />
             <NotesAppSearch />
             <NotesAppList notes={myNotes} />
-            <NotesAppAddNote addNote = {addNote}/>
+            <NotesAppAddNote addNote = {addNote} deleteNote = {deleteNote}/>
         </>
     )
 }
