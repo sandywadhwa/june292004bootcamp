@@ -1,8 +1,14 @@
 import React from 'react'
 
-const NotesAppSearch = () => {
+const NotesAppSearch = (props: any) => {
+    const {setSearchText} = props;
+
   return (
-    <div>NotesAppSearch</div>
+    <div>
+        <input type="text" className="text" placeholder='Type to search....' onChange={(e)=>{
+            setSearchText(e.target.value)
+        }} />
+    </div>
   )
 }
 

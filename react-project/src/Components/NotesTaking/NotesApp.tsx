@@ -29,9 +29,17 @@ const NotesApp = () => {
         return defaultNotes;
     });
 
+    const [searchText, setSearchText] = useState('');
+
     useEffect(() => {
         localStorage.setItem(localStorageKey, JSON.stringify(myNotes));
     });
+
+    // useEffect(() => {
+    //     myNotes.filter((txt: any) => {
+    //         return txt.contains(searchText);
+    //     });
+    // }, [searchText]);
 
     const addNote = (noteText: any) => {
         const date = new Date();
@@ -49,8 +57,10 @@ const NotesApp = () => {
     return (
         <>
             <NotesAppNavBar />
-            <NotesAppSearch />
-            <NotesAppList notes={myNotes} />
+            <NotesAppSearch setSearchText = {setSearchText} />
+            <NotesAppList notes={myNotes.filter((note: any) => {
+                return note.text.toLowerCase().includes(searchText);
+            })} />
             <NotesAppAddNote addNote = {addNote} deleteNote = {deleteNote}/>
         </>
     )
